@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>键盘模仿遥控器操作</title>
+
+    <link rel="stylesheet" href="../bootstrap-3.3.7/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap-3.3.7/dist/css/bootstrap-theme.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row" style="padding-top: 50px;">
+        <div class="col-lg-6">
+            <ul>
+                <lo>
+                    <button id="btn1" class="btn btn-default">按钮01</button>
+                    <button id="btn2" class="btn btn-default">按钮02</button>
+                </lo>
+                <lo>
+                    <button id="btn3" class="btn btn-default">按钮03</button>
+                    <button id="btn4" class="btn btn-default">按钮04</button>
+                </lo>
+                <lo><button id="btn5" class="btn btn-default">按钮05</button>
+                    <button id="btn6" class="btn btn-default">按钮06</button>
+                </lo>
+                <lo><button id="btn7" class="btn btn-default">按钮07</button>
+                    <button id="btn8" class="btn btn-default">按钮08</button>
+                </lo>
+                <lo><button id="btn9" class="btn btn-default">按钮09</button>
+                    <button id="btn10" class="btn btn-default">按钮10</button>
+                </lo>
+                <lo><button id="btn11" class="btn btn-default">按钮11</button>
+                    <button id="btn12" class="btn btn-default">按钮12</button>
+                </lo>
+                <lo><button id="btn13" class="btn btn-default">按钮13</button>
+                    <button id="btn14" class="btn btn-default">按钮14</button>
+                </lo>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="../jquery/jquery-3.2.1.js"></script>
+<script src="../bootstrap-3.3.7/dist/js/bootstrap.js"></script>
+
+<script>
+    let num = 1;
+    let sum = 14;
+    $(function () {
+        $("#btn" + num).focus()
+    });
+
+    function btnFocus(num) {
+        console.log(num);
+        $("#btn" + num).focus();
+    }
+    $(window).keydown(function (event) {
+        switch (event.which) {
+            case 37:
+//                console.log("LEFT");
+                num--;
+                if (num < 1) {
+                    num = sum
+                }
+                btnFocus(num);
+                break;
+            case 38:
+//                console.log("UP");
+                num -= 7;
+                if (num < 1) {
+                    num += sum
+                }
+                btnFocus(num);
+                break;
+            case 39:
+//                console.log("Right");
+                num++;
+                if (num > sum) {
+                    num = 1;
+                }
+                btnFocus(num);
+                break;
+            case 40:
+//                console.log("Down");
+                num += 7;
+                if (num > sum) {
+                    num -= sum;
+                }
+                btnFocus(num);
+                break;
+            case 13:
+//                console.log("Enter");
+                alert("btn" + num);
+                break;
+        }
+    })
+</script>
+</body>
+</html>
